@@ -53,17 +53,25 @@ fun_bar() {
     tput cnorm
 }
 res1() {
-    wget https://raw.githubusercontent.com/scriswan/v1/Cdy/main/LT
+    rm -rf /usr/local/sbin/WELTX
+    rm -rf /usr/local/sbin/LTX
+    rm -rf /usr/local/sbin/FT
+    rm -rf /usr/local/sbin/FEATUR
+    rm -rf /usr/local/sbin/menu-default
+    rm -rf /usr/local/sbin/wel-default
+    rm -rf /usr/local/sbin/ftr-default
+    wget https://raw.githubusercontent.com/scriswan/v1/main/Cdy/LT
     wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/scriswan/v1/main/Enc/encrypt" ; chmod +x /usr/bin/enc
-    7z e -paskykenza123 LT
+    7z e -paskykenza123 menu.zip
     unzip LT
     chmod +x menu/*
     enc menu/*
     mv menu/* /usr/local/sbin
     rm -rf menu
     rm -rf LT
+    rm -rf menu.zip
     rm -rf update.sh
-    rm -rf uodate
+    rm -rf update
     rm -rf /root/menu
     rm -rf /root/menu.zip
     rm -rf /root/update.sh
@@ -196,16 +204,11 @@ res1() {
     rm -rf /root/izinsc
     rm -rf /root/Lt-on-off
     rm -rf /root/udp
-    rm -rf /root/user-ssh
-    rm -rf /root/user-ssr
-    rm -rf /root/user-tro
-    rm -rf /root/user-vme
-    rm -rf /root/user-vle
 }
 netfilter-persistent
 clear
 echo -e "\033[96;1m┌───────────────────────────────────────────┐\033[0m "
-echo -e " \e[1;97;101m               UPDATE SCRIPT         \e[0m"
+echo -e " \e[1;97;104m               UPDATE SCRIPT         \e[0m"
 echo -e "\033[96;1m└───────────────────────────────────────────┘\033[0m "
 echo -e ""
 echo -e "  \033[1;91m Ipdate version Script\033[1;37m"
@@ -302,247 +305,102 @@ else
    status_dropbear="\033[91;1mCRAZY${NC} "
 fi
 
-# Count total Account vmess
-vme_total=$(grep -E "^### " "/etc/xray/config.json" | sed -E 's/^### ([^ ]+).*/\1/' | awk '!seen[$0]++')
-VME=$(echo "$vme_total" | wc -l)
+# \\ Vless account //
+vlx=$(grep -c -E "^#& " "/etc/xray/config.json")
+let vla=$vlx/2
+# \\ Vmess account //
+vmc=$(grep -c -E "^### " "/etc/xray/config.json")
+let vma=$vmc/2
+# \\ Trojan account //
+ssh1="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
+trx=$(grep -c -E "^#! " "/etc/xray/config.json")
+let trb=$trx/2
+# \\ shadowsocks account //
+ssx=$(grep -c -E "^#!# " "/etc/xray/config.json")
+let ssa=$ssx/2
 
-
-# Count total Account vless
-vle_total=$(grep -E "^#& " "/etc/xray/config.json" | sed -E 's/^#& ([^ ]+).*/\1/' | awk '!seen[$0]++')
-VLE=$(echo "$vle_total" | wc -l)
-
-
-# Count total Account trojan
-tro_total=$(grep -E "^#! " "/etc/xray/config.json" | sed -E 's/^#! ([^ ]+).*/\1/' | awk '!seen[$0]++')
-TRO=$(echo "$tro_total" | wc -l)
-
-
-# Count total Account shadowsocks
-ssr_total=$(grep -E "^#!# " "/etc/xray/config.json" | sed -E 's/^#!# ([^ ]+).*/\1/' | awk '!seen[$0]++')
-SSR=$(echo "$ssr_total" | wc -l)
-
-
-# Count total Account noobzvpns
-nob_total=$(grep -E "^#nob# " "/etc/noobzvpns/.noobzvpns" | sed -E 's/^#nob# ([^ ]+).*/\1/' | awk '!seen[$0]++')
-NOB=$(echo "$nob_total" | wc -l)
-
-
-# Count total Account ssh openvpn
-ssh_total=$(grep -E "^#ssh# " "/etc/ssh/.ssh.db" | sed -E 's/^#ssh# ([^ ]+).*/\1/' | awk '!seen[$0]++')
-SSH=$(echo "$ssh_total" | wc -l)
-
-
-
-# // LUNATIC TUNNELING | LT PROJECT
+# //  ADIJAYA-TUNNELING | LT PROJECT
 # // WHATSAPP : 085955333616
 # // TELEGRAM : LunaticTunnel
-clear
 
-
-clear
-# // color format 38
-CC='\e[38;5;14m'  # 
-LO='\e[38;5;162m' # PURPLE HACKER
-UK='\e[38;5;99m'  # UNGU KOLOT
-BK='\e[38;5;196m' # BEREM KOLOT 
-R1='\e[38;5;155m' # HEJO SEMU BODAS
-R2='\e[93;1m'  # HEJO LIME / APEL
-BC='\e[38;5;195m' # BODAS CERAH PISAN
-HU='\e[38;5;115m' # HEJO SEMU ABU
-UB='\e[38;5;147m' # UNGU KABODASAN
-KT='\e[38;5;187m' # KONENG TARIGU
-# // color fromat 5 
-BlueCyan='\e[5;36m'
-WhiteBe='\e[5;37m'
-GreenBe='\e[5;32m'
-Xark='\e[0m'
-
-GR="\e[92;1m"
-
-
-function Banner_Libev() {
-clear
-  echo -e "\e[93;1m ┌━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐${Xark} "
-  echo -e "${GR}           FEATURES LIBEV             ${Xark} "
-  echo -e "\e[93;1m └━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┘${Xark} "
-}
-
-
-
-function BR1() {
-  echo -e "\e[93;1m ┌━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐${Xark} "
-}
-
-function BR2() {
-  echo -e "\e[93;1m └━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┘${Xark} "
-}
-
-
-function Menu_Features() {
-  Banner_Libev
-  BR1
-  echo -e "\e[93;1m │${GR}[01]•\e[97;1m RUNNING SERVICE  "
-  echo -e "\e[93;1m │${GR}[02]•\e[97;1m RESTART SERVICE  "
-  echo -e "\e[93;1m │${GR}[03]•\e[97;1m AUTOREBOOT VPS  "
-  echo -e "\e[93;1m │${GR}[04]•\e[97;1m MONITOR VPS INF  "
-  echo -e "\e[93;1m │${GR}[05]•\e[97;1m SPEEDTEST VPS  "
-  echo -e "\e[93;1m │${GR}[06]•\e[97;1m DELETE AKUN XP   "
-  echo -e "\e[93;1m │${GR}[07]•\e[97;1m CHANGE BANNER   "
-  echo -e "\e[93;1m │${GR}[08]•\e[97;1m CHANGE DOMAIN  "
-  echo -e "\e[93;1m │${GR}[09]•\e[97;1m FIXX HAPROXY  "
-  echo -e "\e[93;1m │${GR}[10]•\e[97;1m FIXX NGINX  "
-  echo -e "\e[93;1m │${GR}[11]•\e[97;1m AUTO POINTING  "
-  echo -e "\e[93;1m │${GR}[12]•\e[97;1m INSTAL FIX UDP   "
-  echo -e "\e[93;1m │${GR}[13]•\e[97;1m BACKUP BOT VIA    "
-  echo -e "\e[93;1m │${GR}[14]•\e[97;1m CLEAR ALL CACHE  "
-  echo -e "\e[93;1m │${GR}[15]•\e[97;1m CLEAR ALL LOGS  "
-  echo -e "\e[93;1m │${GR}[16]•\e[97;1m CLEAR LOGS FILE  "
-  echo -e "\e[93;1m │${GR}[17]•\e[97;1m CHECK BANDWIDTH   "
-  echo -e "\e[93;1m │${GR}[18]•\e[97;1m SCRIPT INFORMATION    "
-  echo -e "\e[93;1m │${GR}[19]•\e[97;1m GANTI TAMPILAN MENU  "
-  echo -e "\e[93;1m │${GR}[20]•\e[97;1m ENCRYPT & DECRYPT  "
-  echo -e "\e[93;1m │${BK}[xx]•\e[0;31m EXIT ${Xark}    "
-  BR2
-  echo -e ""
-read -p "  Just Input 1-20 or xx :  " Ltt
-case $Ltt in
-1) clear ; run ;;
-2) clear ; reset ;;
-3) clear ; autoreboot ;;
-4) clear ; gotop ;;
-5) clear ; speedtest ;;
-6) clear ; xp ;;
-7) clear ; nano /etc/banner.txt ;;
-8) clear ; change-domain ;;
-9) clear ; fixhap ;;
-10) clear ; fixcert ;;
-11) clear ; cf ;;
-12) clear ; UDEPE ;;
-13) clear ; m-bkp ;;
-14) clear ; clearcache ;;
-15) clear ; clearlog ;;
-16) clear ; delet-cache-file ;;
-17) clear ; vnstat ;;
-18) clear ; neo ;;
-19) clear ; m-tme ;;
-20) clear ; ENCSSL ;;
-*) menu ;;
-esac
-}
-
-
-# // Call Function
-# Banner_Libev
-# Menu_Features
-# Select_Menu
-
-
-
-green='\033[0;32m'
-r="\e[91;1m"
-RED="\e[91;1m"
-Blu_Cy="\e[5;36m"
+# // color validity
 # // color format 38
 runn='\e[38;5;14m' 
 acc='\e[38;5;146m'
 LO='\e[38;5;162m'
-UK='\e[38;5;99m'  # UNGU KOLOT
+UK='\e[97;1m'  # UNGU KOLOT
 BK='\e[38;5;196m' # BEREM KOLOT 
 R1='\e[38;5;155m' # HEJO SEMU BODAS
-R2='\e[38;5;49m'  # HEJO LIME / APEL
+R2=' \e[97;1m'  # HEJO LIME / APEL
 BC='\e[38;5;195m' # BODAS CERAH PISAN
 HU='\e[38;5;115m' # HEJO SEMU ABU
 UB='\e[38;5;147m' # UNGU KABODASAN
 KT='\e[38;5;187m' # KONENG TARIGU
 Suffix='\e[0m'
+R1R="\e[31m"
 
-function Lt_System() {
+
+
+
+function Lunatic_Banner() {
 clear
-echo -e "   \e[93;1m──────────────────────────────────────${Suffix}"
-echo -e "   \e[92;1m   .::::.${Suffix}\e[92;1m     RISWANVPN     .::::.${Suffix}"
-echo -e "   \e[93;1m──────────────────────────────────────${Suffix}"
-echo -e "       \e[93;1m┌───────────────────────────┐${Suffix}"
-echo -e "       \e[93;1m│${BK} SYS OS :${Suffix} \e[0;36m$(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g')${Suffix}"
-echo -e "       \e[93;1m│${BK} RAM :${Suffix} \e[0;36m$(free -m | awk 'NR==2 {print $2}') MB/$(free -m | awk 'NR==2 {print $3}') MB${Suffix}"
-echo -e "       \e[93;1m│${BK} UP :${Suffix} \e[0;36m$(uptime -p | cut -d " " -f 2-10000)${Suffix}"
-echo -e "       \e[93;1m│${BK} CORE :${Suffix} \e[0;36m$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")${Suffix}"
-echo -e "       \e[93;1m│${BK} ISP :${Suffix} \e[0;36m$(cat /etc/xray/isp)${Suffix}"
-echo -e "       \e[93;1m│${BK} CITY :${Suffix} \e[0;36m$(cat /etc/xray/city)${Suffix}"
-echo -e "       \e[93;1m│${BK} IP :${Suffix} \e[0;36m$(curl -s ipv4.icanhazip.com)${Suffix}"
-echo -e "       \e[93;1m│${BK} DOMAIN :${Suffix} \e[0;36m$(cat /etc/xray/domain)${Suffix}"
-echo -e "       \e[93;1m└───────────────────────────┘${Suffix}"
+echo -e "\033[96;1m┌─────────────────────────────────────────────────┐\033[0m "
+echo -e "\e[96;1m│ \e[44;97;1m                 ADIJAYA-TUNNELING             \033[0m \e[96;1m│\e[0m"
+echo -e "\033[96;1m└─────────────────────────────────────────────────┘\033[0m "
 }
 
 
-function Status_Service() {
-echo -e "  \e[93;1m┌──────────────────────────────────────┐${Suffix}"
-echo -e "  \e[93;1m│${Suffix} SSH-WS :${Suffix} $status_ssh \e[93;1m│${Suffix} XRAY :${Suffix} $status_xray \e[93;1m│${Suffix} NGINX :${Suffix} $status_nginx \e[93;1m│${Suffix}"
-echo -e "  \e[93;1m└──────────────────────────────────────┘${Suffix}"
-echo -e "     \e[93;1m┌────────────────────────────────┐${Suffix}"
-echo -e "     \e[93;1m│${Suffix} \e[92;1mID :${Suffix}${Blu_Cy} $(cat /usr/bin/user)${Suffix}"
-echo -e "     \e[93;1m│${Suffix} \e[92;1mExp.sc :${Suffix} ${Blu_Cy}$(((d1 - d2) / 86400)) Day.Turn${Suffix}"
-echo -e "     \e[93;1m└────────────────────────────────┘${Suffix}"
+
+function Service_System_Operating() {
+echo -e "\033[96;1m┌─────────────────────────────────────────────────┐\033[0m "
+echo -e "\033[96;1m│\e[38;5;196m SYSTEM          : \e[31m$(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g')     \033[0m "
+echo -e "\033[96;1m│\e[38;5;196m RAM             : \e[31m$(free -m | awk 'NR==2 {print $2}') MB    \033[0m "
+echo -e "\033[96;1m│\e[38;5;196m UPTIME          : \e[31m$(uptime -p | cut -d " " -f 2-10)\033[0m "
+echo -e "\033[96;1m│\e[38;5;196m IP VPS          : \e[31m$(curl -s ipv4.icanhazip.com)     \033[0m "
+echo -e "\033[96;1m│\e[38;5;196m ISP             : \e[31m$(cat /etc/xray/isp)    \033[0m "
+echo -e "\033[96;1m│\e[38;5;196m DOMAIN          : \e[31m$(cat /etc/xray/domain)    \033[0m "
+echo -e "\033[96;1m└─────────────────────────────────────────────────┘\033[0m"
+echo -e "\033[96;1m┌─────────────────────────────────────────────────┐\033[0m "
+echo -e "\033[96;1m│\e[0;36m  SSH : $status_ssh │ \e[0;36mXRAY : $status_xray │ \e[0;36mNGINX : $status_nginx │   \e[0m $status_dropbear    \e[96;1m│\e[0m"
+echo -e "\033[96;1m└─────────────────────────────────────────────────┘\033[0m "
 }
 
-
-function Details_Account() {
-echo -e "     \e[97;1m      SSH: $SSH NOB: $NOB  VME: $VME ${Suffix}"
-echo -e "     \e[97;1m  VLESS: $VLE TROJAN: $TRO SHADWSK: $SSR ${Suffix}"
+function Acces_Use_Command() {
+echo -e "\033[96;1m     ┌────────────────────────────────────────┐\033[0m "
+echo -e "\033[96;1m         \e[97;1m1.) SSH OPNVPN    \e[97;1m6.) TELEGRAM BOT   \e[96;1m \e[0m"   
+echo -e "\033[96;1m     │   \e[97;1m2.) XRAY  MENU    \e[97;1m7.) BACKUP MENU    \e[96;1m│\e[0m"
+echo -e "\033[96;1m         \e[97;1m3.) THEME MENU    \e[97;1m8.) UPDATE.SC      \e[96;1m \e[0m"
+echo -e "\033[96;1m     │   \e[97;1m4.) MONITOR VPS   \e[97;1m9.) SET MANAGER    \e[96;1m│\e[0m"   
+echo -e "\033[96;1m         \e[97;1m5.) NOOBZVPNS     \e[91;1mx.) Exit            \e[96;1m \e[0m"   
+echo -e "\033[96;1m     └────────────────────────────────────────┘\033[0m"
+echo -e "\033[96;1m┌─────────────────────────────────────────────────┐\033[0m "
+echo -e "\033[96;1m└─────────────────────────────────────────────────┘\033[0m "
 }
 
-
-function Menu_Display() {
-echo -e "  \e[93;1m┌──────────────────────────────────────┐${Suffix}"
-echo -e "  \e[93;1m│${Suffix}\e[92;1m 1.${Suffix}\e[0;36mSSH OVPN MANAGER${Suffix}\e[92;1m  4.${Suffix}\e[0;36mTROJAN MANAGER${Suffix} \e[93;1m│${Suffix}"
-echo -e "  \e[93;1m│${Suffix}\e[92;1m 2.${Suffix}\e[0;36mVMESS MANAGER${Suffix}   \e[92;1m  5.${Suffix}\e[0;36mSHDWSK MANAGER${Suffix} \e[93;1m│${Suffix}"
-echo -e "  \e[93;1m│${Suffix}\e[92;1m 3.${Suffix}\e[0;36mVLESS MANAGER${Suffix}   \e[92;1m  6.${Suffix}\e[0;36mOTHER SETTINGS${Suffix} \e[93;1m│${Suffix}"
-echo -e "  \e[93;1m└──────────────────────────────────────┘${Suffix}"
-}
-
-function Sc_Version() {
-echo -e "             \e[97;1m Version : 7.4.7 ${Suffix}"
-echo -e "          \e[95;1m━━━${Suffix}${BK}━━━${Suffix}\e[97;1m━━━${Suffix}${BK}━━━\e[92;1m━━━${Suffix}\e[93;1m━━━${Suffix}\e[94;1m━━━${Suffix}\e[96;1m━━${Suffix}"
-echo -e ""
-}
 
 function Select_Display() {
-read -p "      Select From Options [ 1 - 6 ] : " opt
-echo -e ""
-case $opt in
-1 | 01)
-clear
-m-ssh
-;;
-2 | 02)
-clear
-m-vme
-;;
-3 | 03)
-clear
-m-vle
-;;
-4 | 04)
-clear
-m-tro
-;;
-5 | 05)
-clear
-m-ssr
-;;
-6 | 06)
-clear
-Menu_Features
-;;
-*)
-exit
-;;
+echo -e "\e[93;1m"
+read -p "               »»-----------►   " bangsat
+echo -e "\e[0m"
+case $bangsat in
+1) clear ; m-ssh ;; # menu ssh
+2) clear ; m-xry ;; # menu vmess vless trojan shadowsocks
+3) clear ; m-tme ;; # menu theme
+4) clear ; gotop ;; # gotop
+5) clear ; m-nob ;; # menu noobzvpn
+6) clear ; m-bot ;; # menu bot telegram
+7) clear ; m-bkp ;; # menu backup restore autobackup
+8) clear ; updat ;; # update
+9) clear ; m-ftr ;; # menu setting / tambahan
+*) welcome ;; # Back To Home Welcome
 esac
 }
 
 
-Lt_System
-Status_Service
-Details_Account
-Menu_Display
-Sc_Version
+Lunatic_Banner
+Service_System_Operating
+Acces_Use_Command
 Select_Display
+
+
+

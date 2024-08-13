@@ -8,10 +8,10 @@ clear
 ######################################
 # // USERNAME IZIN IPP
 rm -f /usr/bin/user
-username=$(curl -sS https://raw.githubusercontent.com/Garut-SisiBukit/izinsc/main/ip | grep $MYIP | awk '{print $2}')
+username=$(curl -sS https://raw.githubusercontent.com/scriswan/lunaip/main/ip | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
 rm -f /usr/bin/e
-valid=$(curl -sS https://raw.githubusercontent.com/Garut-SisiBukit/izinsc/main/ip | grep $MYIP | awk '{print $3}')
+valid=$(curl -sS https://raw.githubusercontent.com/scriswan/lunaip/main/ip | grep $MYIP | awk '{print $3}')
 echo "$valid" > /usr/bin/e
 
 clear
@@ -61,11 +61,13 @@ echo -e "${BC} —————————————————————�
 
 
 
+
 function Lunatix_Banner() {
 echo -e "${BC} ————————————————————————————————————————${Xark}"
-echo -e " ${BC}|${PP}        Adijaya - Tunneling ${Xark}          ${BC}|${Xark}"
+echo -e " ${BC}|${PP}             RISWAN - VPN   ${Xark}          ${BC}|${Xark}"
 echo -e "${BC} ————————————————————————————————————————${Xark}"
 }
+
 
 function Service_System_Operating() {
 echo -e "${OG}  OS        :$( cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/PRETTY_NAME//g' | sed 's/=//g' | sed 's/"//g' )   \033[0m "
@@ -78,9 +80,9 @@ echo -e "${OG}  NS DOMAIN :$(cat /root/nsdomain)    \033[0m "
 
 function LtX_Inf() {
 LTX
-echo -e " ${BC}|${UB} Telegram  : @AdijayaStoreVPN           ${BC}|\e[0m"
-echo -e " ${BC}|${UB} Whatsapp  : +6281214726068           ${BC}|\e[0m"
-echo -e " ${BC}|${UB} Channel   : @configAdijaya        ${BC}|\e[0m"
+echo -e " ${BC}|${UB} Telegram  : @Riswanvpnstore           ${BC}|\e[0m"
+echo -e " ${BC}|${UB} Whatsapp  : +6285888801241           ${BC}|\e[0m"
+echo -e " ${BC}|${UB} Channel   : @grupvpnriswan        ${BC}|\e[0m"
 LTX
 echo -e "  ${BC}|\e[97m    Run Type Acces \033[92;1mmenu\033[0m\e[97m Command     ${BC}|\e[0m "
 LTX

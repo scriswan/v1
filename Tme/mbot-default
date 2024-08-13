@@ -68,7 +68,7 @@ Menu_Features
 read -p "  just Input 1-4 or xx :  "  opt
 echo -e   ""
 case $opt in
-01 | 1) clear ; wget https://raw.githubusercontent.com/Garut-SisiBukit/zexcex/main/Bot/bot.sh && chmod +x bot.sh && ./bot.sh ;;
+01 | 1) clear ; wget https://raw.githubusercontent.com/scriswan/v1/main/Bot/bot.sh && chmod +x bot.sh && ./bot.sh ;;
 02 | 2) clear ; systemctl stop cybervpn && m-bot ;;
 03 | 3) clear ; systemctl restart cybervpn && m-bot ;;
 04 | 4) clear ; nano /root/cybervpn/var.txt ;;

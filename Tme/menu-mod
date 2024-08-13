@@ -3,7 +3,7 @@ clear
 
 function checking_sc() {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/Garut-SisiBukit/izinsc/main/ip | awk '{print $4}')
+    IZIN=$(curl -sS https://raw.githubusercontent.com/scriswan/lunaip/main/ip | awk '{print $4}')
 
     if echo "$IZIN" | grep -wq "$MYIP"; then
         echo "IZIN DITERIMA ANJING"
@@ -36,10 +36,10 @@ clear
 ######################################
 # // USERNAME IZIN IPP
 rm -f /usr/bin/user
-username=$(curl -sS https://raw.githubusercontent.com/Garut-SisiBukit/izinsc/main/ip | grep $MYIP | awk '{print $2}')
+username=$(curl -sS https://raw.githubusercontent.com/scriswan/lunaip/main/ip | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
 rm -f /usr/bin/e
-valid=$(curl -sS https://raw.githubusercontent.com/Garut-SisiBukit/izinsc/main/ip | grep $MYIP | awk '{print $3}')
+valid=$(curl -sS https://raw.githubusercontent.com/scriswan/lunaip/main/ip | grep $MYIP | awk '{print $3}')
 echo "$valid" > /usr/bin/e
 
 clear
@@ -178,9 +178,11 @@ f="\e[0;36m"
 
 cL
 
+
 echo -e "${G}╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮${reset}"
-echo -e "${G}│${reset}${Ct}           Adijaya Tunneling          ${G}│ ${reset}"
+echo -e "${G}│${reset}${Ct}              RISWAN VPN              ${G}│ ${reset}"
 echo -e "${G}╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯${reset}"
+
 
 echo -e "${G}╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮${reset}"
 echo -e "${G}│${K} 1.) Ssh udp opnvpn                ${reset}"
