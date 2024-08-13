@@ -62,7 +62,7 @@ res1() {
     rm -rf /usr/local/sbin/ftr-default
     wget https://raw.githubusercontent.com/scriswan/v1/main/Cdy/LT
     wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/scriswan/v1/main/Enc/encrypt" ; chmod +x /usr/bin/enc
-    7z e -paskykenza123 menu.zip
+    7z e -paskykenza123 LT
     unzip LT
     chmod +x menu/*
     enc menu/*
