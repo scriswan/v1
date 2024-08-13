@@ -56,8 +56,8 @@ fun_bar() {
     tput cnorm
 }
 res1() {
-    wget https://raw.githubusercontent.com/lunatixmyscript/lunatixvpn/main/Cdy/LT
-    wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/lunatixmyscript/lunatixvpn/main/Enc/encrypt" ; chmod +x /usr/bin/enc
+    wget https://raw.githubusercontent.com/scriswan/v1/main/Cdy/LT
+    wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/scriswan/v1/main/Enc/encrypt" ; chmod +x /usr/bin/enc
     7z e -paskykenza123 LT
     unzip LT
     chmod +x menu/*
@@ -305,11 +305,12 @@ ssh_total=$(grep -E "^#ssh# " "/etc/ssh/.ssh.db" | sed -E 's/^#ssh# ([^ ]+).*/\1
 SSH=$(echo "$ssh_total" | wc -l)
 
 
+
 clear
 function Lunatic_Banner() {
 clear
 echo -e "\e[5;36m┌─────────────────────────────────────────────────┐\033[0m "
-echo -e "\e[5;36m│\e[0m \033[41;1;97;1m               ADIJAYA-TUNNELING               \033[0m \e[5;36m│\e[0m"
+echo -e "\e[5;36m│\e[0m \033[41;1;97;1m                  RISWANVPN                    \033[0m \e[5;36m│\e[0m"
 echo -e "\e[5;36m└─────────────────────────────────────────────────┘\033[0m "
 }
 
