@@ -14,7 +14,7 @@ function checking_sc() {
         echo -e "  \033[0;36mYour VPS IP $MYIP has been banned.\033[0m"
         echo -e "    \033[0;36mBuy access permissions for scripts.\033[0m"
         echo -e "            \033[0;36mContact Admin :\033[0m"
-        echo -e "     \033[2;32mWhatsApp\033[0m https://wa.me/6285955333616"
+        echo -e "     \033[2;32mWhatsApp\033[0m https://wa.me/6285888801241"
         echo -e "\e[38;5;162m────────────────────────────────────────────\033[0m"
         exit 1  # Exit with non-zero status to indicate failure // Lunatix
     fi
